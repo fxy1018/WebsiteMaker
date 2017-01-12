@@ -2,6 +2,10 @@
   "name": "web-dev",
   "version": "1.0.0",
   "description": "Web Dev at Northeastern University",
+  "engines":{
+    "node": "6.9.4",
+    "npm":"3.10.10"
+  },
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.15.1",
