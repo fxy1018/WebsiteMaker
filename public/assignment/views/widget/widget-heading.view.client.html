@@ -18,19 +18,26 @@
     <div class="container">
         <div class="form-group">
             <label for="headname">Name</label>
-            <input type="text" class="form-control" id="headname">
+            <input type="text"
+                   ng-model="model.widget.name"
+                   class="form-control"
+                   id="headname">
         </div>
         
         <div class="form-group">
             <label for="headtext">Text</label>
-            <input id="headtext" class="form-control" placeholder="Page Title" value="US Senate Reaches..."/>
+            <input id="headtext"
+                   ng-model="model.widget.text"
+                   class="form-control"
+                   placeholder="Page Title"
+                   value="US Senate Reaches..."/>
         
         </div>
     
         <div class="form-group">
             <label for="headsize">Size</label>
              
-            <select class="form-control" id="headsize">
+            <select class="form-control" ng-model="model.widget.size" id="headsize">
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>

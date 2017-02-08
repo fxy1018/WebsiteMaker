@@ -18,24 +18,24 @@
     <div class="container-fluid">
         <div class="form-group">
             <label for="headname">Name</label>
-            <input type="text" class="form-control" id="headname">
+            <input type="text" ng-model="model.widget.name" class="form-control" id="headname">
         </div>
         
         <div class="form-group">
             <label for="headtext">Text</label>
-            <input id="headtext" type="text" class="form-control" />
+            <input id="headtext" ng-model="model.widget.text" type="text" class="form-control" />
         
         </div>
         
         <div class="form-group">
             <label for="headurl">URL</label>
-            <input id="headurl" type="url" class="form-control" placeholder="Page Title" value="http://www.youtube.com/"/>
+            <input id="headurl" type="url" ng-model="model.widget.url" class="form-control" placeholder="Page Title" value="http://www.youtube.com/"/>
     
         </div>
     
         <div class="form-group">
             <label for="width">Width</label>
-            <input id="width" type="number" class="form-control"  value="US Senate Reaches..."/>
+            <input id="width" type="number" ng-model="model.widget.width" class="form-control"  value="US Senate Reaches..."/>
     
         </div>
         

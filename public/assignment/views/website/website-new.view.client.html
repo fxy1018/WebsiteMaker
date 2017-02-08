@@ -62,12 +62,19 @@
         <form>
             <div class="form-group">
                 <label for="webname">Name</label>
-                <input id="webname" class="form-control"  type="text" placeholder="Name">
+                <input id="webname"
+                       ng-model="model.website.name"
+                       class="form-control"
+                       type="text" placeholder="Name">
             </div>
             
             <div class="form-group">
                 <label for="webdescription">Description</label>
-                <textarea id="webdescription"  class="form-control" rows="5" placeholder="Description"></textarea>
+                <textarea id="webdescription"
+                          ng-model="model.website.description"
+                          class="form-control"
+                          rows="5"
+                          placeholder="Description"></textarea>
             </div>
             <div class="form-group">
                 <a href="website-list.view.client.html" class="btn btn-success form-control">Create</a>
