@@ -1,6 +1,6 @@
 (function () {
     angular
-        .module("WepAppMaker")
+        .module("WebAppMaker")
         .factory("PageService", PageService);
 
     function PageService() {
@@ -10,11 +10,11 @@
             { "_id": "543", "name": "Post 3", "websiteId": "456", "description": "Lorem" }
         ];
         var api = {
-            "createPage" : "createPage",
-            "findPageByWebsiteId" : "findPageByWebsiteId",
-            "findPageById" : "findPageById",
-            "updatePage" : "updatePage",
-            "deletePage" : "deletePage"
+            "createPage" : createPage,
+            "findPagesByWebsiteId" : findPagesByWebsiteId,
+            "findPageById" : findPageById,
+            "updatePage" : updatePage,
+            "deletePage" : deletePage
         };
         return api;
 
@@ -24,14 +24,15 @@
             pages.push(page);
         }
 
-        function findPageByWebsiteId(websiteId) {
+        function findPagesByWebsiteId(websiteId) {
+            var pagesites = []
             for (var p in pages){
                 var page = pages[p];
                 if (page.websiteId === websiteId){
-                    return angular.copy(page);
+                    pagesites.push(page);
                 }
             }
-            return null;
+            return pagesites;
         }
 
         function findPageById(pageId) {
@@ -51,7 +52,7 @@
                 if (page._id === pageId){
                     page.name = newPage.name;
                     page.description = newPage.description;
-                    return page;
+                    return angular.copy(page);
                 }
             }
             return null;

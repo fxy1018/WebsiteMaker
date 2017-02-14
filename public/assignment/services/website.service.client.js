@@ -2,6 +2,8 @@
     angular
         .module("WebAppMaker")
         .factory("WebSiteService", WebSiteService);
+    //use factory pattern, object try to extenstate, use new is not enough, this design pattern, encapsure everything
+    // and return the actual instance of the object
 
     function WebSiteService(){
       var websites =[
@@ -13,11 +15,11 @@
           { "_id": "789", "name": "Chess", "developerId": "234", "description": "Lorem" }
       ];
       var api = {
-          "createWebsite" : "createWebsite",
-          "findWebsitesByUser" : "findWebsitesByUser",
-          "findWebsiteById" : "findWebsiteById",
-          "updateWebsite" : "updateWebsite",
-          "deleteWebsite" : "deleteWebsite"
+          "createWebsite" : createWebsite,
+          "findWebsitesByUser" : findWebsitesByUser,
+          "findWebsiteById" : findWebsiteById,
+          "updateWebsite" : updateWebsite,
+          "deleteWebsite" : deleteWebsite
       };
       return api;
 
@@ -28,13 +30,14 @@
       }
       
       function findWebsitesByUser(userId){
+          var sites = []
           for (var w in websites){
               var website = websites[w];
               if (website.developerId === userId){
-                  return angular.copy(website);
+                  sites.push(website);
               }
           }
-          return null;
+          return sites;
       }
       
       function findWebsiteById(websiteId){
@@ -53,11 +56,12 @@
               if (website._id === websiteId){
                   website.name = newWebsite.name;
                   website.description = newWebsite.description;
-                  return website;
+                  return angular.copy(website);
               }
           }
           return null;
       }
+
 
       function deleteWebsite(websiteId){
           for (var w in websites) {

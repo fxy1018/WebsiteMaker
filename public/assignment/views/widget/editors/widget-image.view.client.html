@@ -1,11 +1,11 @@
 <nav class="navbar navbar-fixed-top navbar-default">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a class="navbar-link " href="widget-list.view.client.html">
+            <a class="navbar-link " href="../widget-list.view.client.html">
                 <span class="glyphicon glyphicon-ok"></span></a>
         </div>
         <div class="navbar-text pull-left">
-            <a class="navbar-link " href="widget-list.view.client.html">
+            <a class="navbar-link " href="../widget-list.view.client.html">
                 <span class="glyphicon glyphicon-chevron-left "></span></a>
         </div>
         <div class="navbar-header">
@@ -30,21 +30,28 @@
         <div class="form-group">
             <label for="headurl">URL</label>
             <input id="headurl" type="url" ng-model="model.widget.url" class="form-control" placeholder="Page Title" value="http://www.youtube.com/"/>
+        
+        </div>
+        
+        <div class="form-group">
+            <label for="imagewidth">Width</label>
+            <input id="imagewidth" type="text" ng-model="model.widget.width" class="form-control" value="100%"/>
+        
+        </div>
+    
+        <div class="form-group">
+            <label for="upload">Upload</label>
+            <input id="upload" type="file" class="form-control" />
     
         </div>
     
         <div class="form-group">
-            <label for="width">Width</label>
-            <input id="width" type="number" ng-model="model.widget.width" class="form-control"  value="US Senate Reaches..."/>
+            <a href="../widget-list.view.client.html" class="btn btn-primary form-control">Upload Image</a>
     
         </div>
         
         <div class="form-group">
-            <a href="widget-list.view.client.html" class="btn btn-danger form-control">Delete</a>
-        </div>
-        
-        <div class="form-group">
-            <a href="widget-list.view.client.html" class="btn btn-success form-control">Cancel</a>
+            <a href="../widget-list.view.client.html" class="btn btn-danger form-control">Delete</a>
         </div>
     </div>
 </form>
@@ -52,10 +59,11 @@
 <nav class="navbar navbar-fixed-bottom navbar-default">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-                <a href="../views/user/profile.view.client.html" class="navbar-link ">
+            <a href="../views/user/profile.view.client.html" class="navbar-link ">
                 <span class="glyphicon glyphicon-user">
                     </span>
-                </a>
+            </a>
         </div>
     </div>
 </nav>
+

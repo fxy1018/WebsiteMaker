@@ -1,7 +1,7 @@
 (function () {
     angular
         .module("WebAppMaker")
-        .factory("UserService", UserService);
+        .factory('UserService', UserService);
 
     function UserService() {
         var users= [
@@ -11,25 +11,37 @@
             {_id: "456", username: "jannunzi", password: "jannunzi", firstName: "Jose", lastName: "Annunzi" }
         ];
         var api = {
-            "createUser" : "createUser",
-            "findUserById" : "findUserById",
-            "findUserByUsername" : "findUserByUsername",
-            "findUserByCredentials" : "findUserByCredentials",
-            "updateUser" : "updateUser",
-            "deleteUser" : "deleteUser"
+            "users" : users,
+            "createUser" : createUser,
+            "findUserById" : findUserById,
+            "findUserByUsername" : findUserByUsername,
+            "findUserByCredentials" : findUserByCredentials,
+            "updateUser" : updateUser,
+            "deleteUser" : deleteUser
         };
         return api;
 
         function createUser(user){
-            user._id = (new Date()).getTime();
-            users.push(user);
+            for (var u in users){
+                if (user.username === users[u].username){
+                    return "error1";
+                }
+            }
+            if (user.password != user.verifiedpassword){
+                return "error2";
+                }
+            else {
+                user._id = (new Date()).getTime();
+                users.push(user);
+                return angular.copy(user);
+            }
         }
 
         function findUserById(userId){
             for (var u in users){
                 var user = users[u];
                 if (user._id === userId){
-                    return angular.copy(users);
+                    return angular.copy(user);
                 }
             }
             return null;
@@ -39,7 +51,7 @@
             for (var u in users){
                 var user = users[u];
                 if (user.username === username) {
-                    return angular.copy(users);
+                    return angular.copy(user);
                 }
             }
             return null;
@@ -48,8 +60,9 @@
         function findUserByCredentials(username, password){
             for (var u in users){
                 var user = users[u];
-                if (user.username === username && user.password === password){
-                    return angular.copy(users);
+                if (user.username === username &&
+                    user.password === password){
+                    return angular.copy(user);
                 }
             }
             return null;

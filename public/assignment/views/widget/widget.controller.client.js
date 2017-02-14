@@ -5,8 +5,12 @@
         .controller("NewWidgetController", NewWidgetController)
         .controller("EditWidgetController", EditWidgetController)
 
-    function WidgetListController() {
+    function WidgetListController($sce, $routeParams, WidgetService) {
         var vm = this;
+        vm.userId = $routeParams.uid;
+        vm.websiteId = $routeParams.wid;
+        vm.pageId = $routeParams.pid;
+
 
     }
 
@@ -15,8 +19,12 @@
 
     }
 
-    function EditWidgetController() {
+    function EditWidgetController($routeParams, WidgetService) {
         var vm = this;
+        vm.userId = $routeParams.uid;
+
+
+
 
     }
 
