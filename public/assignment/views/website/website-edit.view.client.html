@@ -34,39 +34,69 @@
 
 <div class="container-fluid">
     <div class="hidden-xs col-sm-4" >
+        <!--<ul class="list-group">-->
+            <!--<li class="list-group-item">-->
+                <!--<a href="#">-->
+                    <!--Address Book App-->
+                <!--</a>-->
+                <!--<a href="#" class="pull-right wbdv-margin-left-15">-->
+                    <!--<span class="glyphicon glyphicon-cog"></span>-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li class="list-group-item">-->
+                <!--<a href="#">-->
+                    <!--Blogger-->
+                <!--</a>-->
+                <!--<a href="#" class="pull-right wbdv-margin-left-15">-->
+                    <!--<span class="glyphicon glyphicon-cog"></span>-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li class="list-group-item">-->
+                <!--<a href="#">-->
+                    <!--Blogging App-->
+                <!--</a>-->
+                <!--<a href="#" class="pull-right wbdv-margin-left-15">-->
+                    <!--<span class="glyphicon glyphicon-cog"></span>-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--<li class="list-group-item">-->
+                <!--<a href="#">-->
+                    <!--Script-->
+                <!--</a>-->
+                <!--<a href="#" class="pull-right wbdv-margin-left-15">-->
+                    <!--<span class="glyphicon glyphicon-cog"></span>-->
+                <!--</a>-->
+            <!--</li>-->
+        <!--</ul>-->
         <ul class="list-group">
             <li class="list-group-item">
-                <a href="#">
-                    Address Book App
-                </a>
-                <a href="#" class="pull-right wbdv-margin-left-15">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>
+                <div class="row">
+                    <div class="col-xs-10">
+                        Name
+                    </div>
+                    <div class="col-xs-2">
+                        <a href="#/user/{{model.userId}}/website/new" class ="pull-right">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </a>
+                    </div>
+                </div>
             </li>
-            <li class="list-group-item">
-                <a href="#">
-                    Blogger
-                </a>
-                <a href="#" class="pull-right wbdv-margin-left-15">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>
+        
+            <li class="list-group-item"
+                ng-repeat="website in model.websites">
+                <div class="row">
+                    <div class="col-xs-10">
+                        {{website.name}}
+                    </div>
+                    
+                    <div class="col-sm-2">
+                        <a href="#/user/{{model.userId}}/website/{{website._id}}" class="pull-right">
+                            <span class="glyphicon glyphicon-cog"></span>
+                        </a>
+                    </div>
+                </div>
             </li>
-            <li class="list-group-item">
-                <a href="#">
-                    Blogging App
-                </a>
-                <a href="#" class="pull-right wbdv-margin-left-15">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>
-            </li>
-            <li class="list-group-item">
-                <a href="#">
-                    Script
-                </a>
-                <a href="#" class="pull-right wbdv-margin-left-15">
-                    <span class="glyphicon glyphicon-cog"></span>
-                </a>
-            </li>
+    
         </ul>
     </div>
     

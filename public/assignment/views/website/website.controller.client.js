@@ -5,12 +5,31 @@
         .controller("NewWebSiteController", NewWebSiteController)
         .controller("EditWebSiteController", EditWebSiteController)
 
-    function WebSiteListController() {
+    function WebSiteListController($routeParams, WebSiteService) {
         var vm = this;
+        vm.userId = $routeParams.uid;
+        function init(){
+            vm.websites = WebSiteService.findWebsitesByUser(vm.userId);
+            console.log(vm.websites)
+        }
+        init();
     }
 
-    function NewWebSiteController() {
+    function NewWebSiteController($routeParams, WebSiteService, $location) {
         var vm = this;
+        vm.userId = $routeParams.uid;
+        vm.createWebsite = createWebsite;
+        function init(){
+            vm.websites = WebSiteService.findWebsitesByUser(vm.userId);
+            console.log(vm.websites);
+        }
+        init();
+
+
+        function createWebsite(website){
+            WebSiteService.createWebsite(vm.userId, website);
+            $location.url("/user/"+vm.userId+"/website");
+        }
     }
 
     function EditWebSiteController($routeParams, $location, WebSiteService) {

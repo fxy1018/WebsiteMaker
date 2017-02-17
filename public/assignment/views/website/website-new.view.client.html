@@ -35,53 +35,84 @@
 
 <div class="container-fluid" >
     <div class="hidden-xs col-sm-4" >
-        <form>
-            <div class="form-group">
-                <a href="#">Address Book App</a>
-                <a href="website-edit.view.client.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-            </div>
+        <!--<form>-->
+            <!--<div class="form-group">-->
+                <!--<a href="#">Address Book App</a>-->
+                <!--<a href="website-edit.view.client.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>-->
+            <!--</div>-->
+    <!---->
+            <!--<div class="form-group">-->
+                <!--<a href="#">Blogger</a>-->
+                <!--<a href="website-edit.view.client.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>-->
+            <!--</div>-->
+    <!---->
+            <!--<div class="form-group">-->
+                <!--<a href="#">Blogging App</a>-->
+                <!--<a href="website-edit.view.client.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>-->
+            <!--</div>-->
+    <!---->
+            <!--<div class="form-group">-->
+                <!--<a href="#">Script</a>-->
+                <!--<a href="website-edit.view.client.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>-->
+            <!--</div>-->
+        <!--</form>-->
+        <ul class="list-group">
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col-xs-10">
+                        Name
+                    </div>
+                    <div class="col-xs-2">
+                        <a href="#/user/{{model.userId}}/website/new" class ="pull-right">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+        
+            <li class="list-group-item"
+                ng-repeat="website in model.websites">
+                <div class="row">
+                    <div class="col-xs-10">
+                        {{website.name}}
+                    </div>
+                
+                    <div class="col-sm-2">
+                        <a href="#/user/{{model.userId}}/website/{{website._id}}" class="pull-right">
+                            <span class="glyphicon glyphicon-cog"></span>
+                        </a>
+                    </div>
+                </div>
+            </li>
     
-            <div class="form-group">
-                <a href="#">Blogger</a>
-                <a href="website-edit.view.client.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-            </div>
-    
-            <div class="form-group">
-                <a href="#">Blogging App</a>
-                <a href="website-edit.view.client.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-            </div>
-    
-            <div class="form-group">
-                <a href="#">Script</a>
-                <a href="website-edit.view.client.html"><span class="glyphicon glyphicon-cog pull-right"></span></a>
-            </div>
-        </form>
+        </ul>
     </div>
     
     <div class="col-sm-8 col-xs-12">
         <form>
             <div class="form-group">
-                <label for="webname">Name</label>
+                <label for="webname">Website Name</label>
                 <input id="webname"
-                       ng-model="model.website.name"
+                       ng-model="website.name"
                        class="form-control"
                        type="text" placeholder="Name">
             </div>
             
             <div class="form-group">
-                <label for="webdescription">Description</label>
+                <label for="webdescription">Website Description</label>
                 <textarea id="webdescription"
-                          ng-model="model.website.description"
+                          ng-model="website.description"
                           class="form-control"
                           rows="5"
                           placeholder="Description"></textarea>
             </div>
             <div class="form-group">
-                <a href="website-list.view.client.html" class="btn btn-success form-control">Create</a>
+                <a ng-click="model.createWebsite(website)" class="btn btn-success form-control">Create</a>
             </div>
             <div class="form-group">
-                <a href="website-list.view.client.html" class="btn btn-danger form-control">Cancel</a>
+                <a href="website-list.view.client.html" class="btn btn-primary form-control">Cancel</a>
             </div>
+
         </form>
     </div>
 </div>

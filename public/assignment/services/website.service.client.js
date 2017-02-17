@@ -27,10 +27,11 @@
           website._id = (new Date()).getTime();
           website.developerId = userId;
           websites.push(website);
+          console.log(websites);
       }
       
       function findWebsitesByUser(userId){
-          var sites = []
+          var sites = [];
           for (var w in websites){
               var website = websites[w];
               if (website.developerId === userId){
@@ -39,7 +40,8 @@
           }
           return sites;
       }
-      
+
+
       function findWebsiteById(websiteId){
           for (var w in websites){
               var website = websites[w];

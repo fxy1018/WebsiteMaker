@@ -1,52 +1,97 @@
 <nav class="navbar navbar-fixed-top bg-primary">
     <div class="container-fluid">
         <div class="navbar-text pull-left">
-            <a class="bg-primary" href="../views/user/profile.view.client.html">
+            <a class="bg-primary" href="#/user/{{model.userId}}">
                 <span class="glyphicon glyphicon-chevron-left "></span></a>
         </div>
         <div class="navbar-text pull-right">
             <a class="bg-primary "
-               href="website-new.view.client.html">
+               href="#/user/{{model.userId}}/website/new">
                 <span class="glyphicon glyphicon-plus"></span></a>
         </div>
         
         <div class="navbar-header">
-            <a href="website-list.view.client.html" class="bg-primary"><span class="navbar-brand">Websites</span></a>
+            <span class="navbar-brand bg-primary">Websites</span>
         </div>
     </div>
 </nav>
 
+<!--<div class="container-fluid">-->
+    <!--<form>-->
+        <!--<div class="form-group">-->
+            <!--<a href="#">Address Book App</a>-->
+            <!--<a href="#/user/{{model.userId}}/website">-->
+                <!--<span class="glyphicon glyphicon-cog pull-right">-->
+                <!--</span></a>-->
+        <!--</div>-->
+        <!---->
+        <!--<div class="form-group">-->
+            <!--<a href="#">Blogger</a>-->
+            <!--<a href="website-edit.view.client.html">-->
+                <!--<span class="glyphicon glyphicon-cog pull-right">-->
+                <!--</span></a>-->
+        <!--</div>-->
+        <!---->
+        <!--<div class="form-group">-->
+            <!--<a href="#">Blogging App</a>-->
+            <!--<a href="website-edit.view.client.html">-->
+                <!--<span class="glyphicon glyphicon-cog pull-right">-->
+                <!--</span></a>-->
+        <!--</div>-->
+        <!---->
+        <!--<div class="form-group">-->
+            <!--<a href="#">Script</a>-->
+            <!--<a href="website-edit.view.client.html">-->
+                <!--<span class="glyphicon glyphicon-cog pull-right">-->
+                <!--</span></a>-->
+        <!--</div>-->
+    <!--</form>-->
+<!--</div>-->
+
 <div class="container-fluid">
-    <form>
-        <div class="form-group">
-            <a href="#">Address Book App</a>
-            <a href="website-edit.view.client.html">
-                <span class="glyphicon glyphicon-cog pull-right">
-                </span></a>
-        </div>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col-xs-11 col-sm-6">
+                    Name
+                </div>
+                <div class="col-sm-3 hidden-xs">
+                    Last Modified
+                </div>
+                <div class="col-sm-2 hidden-xs">
+                    Owner
+                </div>
+                <div class="col-sm-1 hindden-xs">
+                    <a href="#/user/{{model.userId}}/website/new" class ="pull-right">
+                        <span class="glyphicon glyphicon-plus"></span>
+                    </a>
+                </div>
+            </div>
+        </li>
+    
+        <li class="list-group-item"
+            ng-repeat="website in model.websites">
+            <div class="row">
+                <div class="col-xs-11 col-sm-6">
+                    {{website.name}}
+                </div>
+                <div class="col-sm-3 hidden-xs">
+                    {{website.name}}
+                </div>
+                <div class="col-sm-2 hidden-xs">
+                    {{website.developerId}}
+                </div>
+                <div class="col-sm-1 hidden-xs">
+                    <a href="#/user/{{model.userId}}/website/{{website._id}}" class="pull-right">
+                        <span class="glyphicon glyphicon-cog"></span>
+                    </a>
+                </div>
+            </div>
+        </li>
         
-        <div class="form-group">
-            <a href="#">Blogger</a>
-            <a href="website-edit.view.client.html">
-                <span class="glyphicon glyphicon-cog pull-right">
-                </span></a>
-        </div>
-        
-        <div class="form-group">
-            <a href="#">Blogging App</a>
-            <a href="website-edit.view.client.html">
-                <span class="glyphicon glyphicon-cog pull-right">
-                </span></a>
-        </div>
-        
-        <div class="form-group">
-            <a href="#">Script</a>
-            <a href="website-edit.view.client.html">
-                <span class="glyphicon glyphicon-cog pull-right">
-                </span></a>
-        </div>
-    </form>
+    </ul>
 </div>
+
 
 <nav class="navbar navbar-fixed-bottom bg-primary">
     <div class="container-fluid">

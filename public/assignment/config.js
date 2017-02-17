@@ -31,12 +31,12 @@
             })
             .when("/user/:uid/website",{
                 templateUrl:"views/website/website-list.view.client.html",
-                controller: "WebsiteListController",
+                controller: "WebSiteListController",
                 controllerAs: "model"
             })
             .when("/user/:uid/website/new",{
                 templateUrl:"views/website/website-new.view.client.html",
-                controller: "NewWebsiteController",
+                controller: "NewWebSiteController",
                 controllerAs: "model"
             })
             .when("/user/:uid/website/:wid",{

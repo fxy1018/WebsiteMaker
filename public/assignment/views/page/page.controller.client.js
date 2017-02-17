@@ -5,8 +5,12 @@
         .controller("NewPageController", NewPageController)
         .controller("EditPageController", EditPageController)
 
-    function PageListController() {
+    function PageListController($routeParams, PageService) {
         var vm = this;
+        vm.userId = $routeParams.uid;
+        vm.websiteId = $routeParams.wid;
+        vm.pages = PageService.findPagesByWebsiteId(vm.websiteId);
+        console.log(vm.pages);
     }
 
     function NewPageController() {
