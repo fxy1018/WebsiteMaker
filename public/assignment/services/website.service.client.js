@@ -24,7 +24,7 @@
       return api;
 
       function createWebsite(userId, website){
-          website._id = (new Date()).getTime();
+          website._id = (new Date()).getTime().toString();
           website.developerId = userId;
           websites.push(website);
           console.log(websites);

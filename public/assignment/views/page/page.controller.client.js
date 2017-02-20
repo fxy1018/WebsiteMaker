@@ -13,14 +13,29 @@
         console.log(vm.pages);
     }
 
-    function NewPageController() {
+    function NewPageController($routeParams, PageService, $location) {
         var vm = this;
+        vm.userId = $routeParams.uid;
+        vm.websiteId = $routeParams.wid;
+        // vm.pages = PageService.findPagesByWebsiteId(vm.websiteId);
+        function init(){
+            vm.pages = PageService.findPagesByWebsiteId(vm.websiteId);
+            console.log(vm.websites);
+        }
+        init();
+
+        vm.updatePage = updatePage;
+
+        function updatePage(page){
+            PageService.createPage(vm.websiteId, page);
+            $location.url("/user/" + vm.userId + "/website/" + vm.websiteId + "/page");
+        }
 
     }
 
     function EditPageController($routeParams, PageService, $location) {
         var vm = this;
-        vm.useId = $routeParams.uid;
+        vm.userId = $routeParams.uid;
         vm.websiteId = $routeParams.wid;
         vm.pageId = $routeParams.pid;
 

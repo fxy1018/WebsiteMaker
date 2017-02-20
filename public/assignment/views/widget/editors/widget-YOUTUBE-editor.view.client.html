@@ -1,0 +1,41 @@
+<h1>YouTube Editor</h1>
+<form>
+    <div class="container-fluid">
+        <div class="form-group">
+            <label for="youtubename">Name</label>
+            <input type="text" ng-model="model.widget.name" class="form-control" id="youtubename">
+        </div>
+        
+        <div class="form-group">
+            <label for="youtubetext">Text</label>
+            <input id="youtubetext" ng-model="model.widget.text" type="text" class="form-control" />
+        
+        </div>
+        
+        <div class="form-group">
+            <label for="youtubeurl">URL</label>
+            <input id="youtubeurl" type="url" ng-model="model.widget.url" class="form-control" />
+    
+        </div>
+    
+        <div class="form-group">
+            <label for="width">Width</label>
+            <input id="width" type="text" ng-model="model.widget.width" class="form-control" />
+    
+        </div>
+        
+        <div class="form-group">
+            <a ng-click="model.updateWidget()" class="btn btn-success form-control">Update</a>
+        </div>
+    
+        <div class="form-group">
+            <a ng-click="model.deleteWidget()" class="btn btn-danger form-control">Delete</a>
+        </div>
+        <div class="form-group">
+            <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget"
+               class="btn btn-primary form-control">Cancel</a>
+        </div>
+    </div>
+</form>
+
+

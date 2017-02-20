@@ -1,11 +1,11 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-text pull-left">
-            <a class="navbar-link" href="../views/page/page-list.view.client.html">
+            <a class="navbar-link" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}">
                 <span class="glyphicon glyphicon-chevron-left"></span></a>
         </div>
         <div class="navbar-text pull-right">
-            <a class="navbar-link" href="widget-chooser.view.client.html">
+            <a class="navbar-link" href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/new">
                 <span class="glyphicon glyphicon-plus"></span></a>
         </div>
         
@@ -15,74 +15,40 @@
     </div>
 </nav>
 
-<div class="container-fluid">
-    <div>
-        <div class="jga-toolbar">
-            <a href="editors/widget-heading.view.client.html">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
+<form>
+    <div class="container-fluid">
+        <!--{{model.widgets}}-->
+        <div class="form-group" ng-repeat="widget in model.widgets">
+            <div class="jga-toolbar">
+                <a href="#/user/{{model.userId}}/website/{{model.websiteId}}/page/{{model.pageId}}/widget/{{widget._id}}">
+                    <span class="glyphicon glyphicon-cog"></span>
+                </a>
+                <span class="glyphicon glyphicon-align-justify"></span>
+            </div>
+            
+           <!--{{widget}}-->
+            <ng-include src="model.getWidgetTemplateUrl(widget.widgetType)"></ng-include>
+            
+            <!--<div ng-switch="widget.widgetType">-->
+                <!--<div ng-switch-when="HEADER">-->
+                    <!--<ng-include src="'views/widget/widget-HEADER.view.client.html'"></ng-include>-->
+                <!--</div>-->
+                <!---->
+                <!--<div ng-switch-when="IMAGE">-->
+                    <!--<ng-include src="'views/widget/widget-IMAGE.view.client.html'"></ng-include>-->
+                <!--</div>-->
+                <!---->
+                <!--<div ng-switch-when="HTML">-->
+                    <!--<ng-include src="'views/widget/widget-HTML.view.client.html'"></ng-include>-->
+                <!--</div>-->
+                <!---->
+                <!--<div ng-switch-when="YOUTUBE">-->
+                    <!--<ng-include src="'views/widget/widget-YOUTUBE.view.client.html'"></ng-include>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
-        <h1>GIZMODO</h1>
     </div>
-    <div>
-        <div class="jga-toolbar">
-            <a href="editors/widget-heading.view.client.html">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
-        </div>
-        <h3>US Senate Reaches Compromission on Emergnecy Zika Funding</h3>
-    </div>
-    
-    <div>
-        <div class="jga-toolbar">
-            <a href="editors/widget-image.view.client.html">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
-        </div>
-        <img src="https://i.kinja-img.com/gawker-media/image/upload/s--UE7cu6DV--/c_scale,fl_progressive,q_80,w_800/xoo0evqxzxrrmrn4ayoq.jpg" width="100%">
-    </div>
-    <div>
-        <div class="jga-toolbar">
-            <a>
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
-        </div>
-        <p>At the Environmental Protection Agency, it’s typical for an incoming administration to implement a realignment of sorts—with some grants or contracts, for instance, being frozen temporarily—but a decision by President Donald Trump’s staff to <a href="http://www.latimes.com/politics/washington/la-na-trailguide-updates-trump-administration-orders-media-1485281190-htmlstory.html" target="_blank" rel="noopener">order a total media blackout</a>, as well as ban any new spending, has left some employees rattled. <br></p>
-    </div>
-    <div>
-        <div class="jga-toolbar">
-            <a>
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
-        </div>
-        <h3>Man in Wingsuit Files Straight Through a Ring of Fire</h3>
-    </div>
-    <div>
-        <div class="jga-toolbar">
-            <a href="editors/widget-youtube.view.client.html">
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
-        </div>
-        <iframe width="100%" src="https://www.youtube.com/embed/vQD1Txzvq70" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div>
-        <div class="jga-toolbar">
-            <a>
-                <span class="glyphicon glyphicon-cog"></span>
-            </a>
-            <span class="glyphicon glyphicon-align-justify"></span>
-        </div>
-        <p>The following set of features are required. You can provide various features in a single Web page or decide to
-            spread the feature across several pages. You are free to layout the pages and implement navigation any which
-            way you want as long as you implement the features below. Pages must be phone and tablet friendly.</p>
-    </div>
-</div>
+</form>
 
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container-fluid">
@@ -91,7 +57,7 @@
             <span class="glyphicon glyphicon-eye-open"></span>
         </div>
         <div class="navbar-text pull-right">
-             <a href="../views/user/profile.view.client.html" class="glyphicon glyphicon-user"></a>
+             <a href="#/user/{{model.userId}}" class="glyphicon glyphicon-user"></a>
         </div>
     </div>
 </nav>

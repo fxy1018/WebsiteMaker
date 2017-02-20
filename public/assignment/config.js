@@ -70,19 +70,11 @@
                 controllerAs: "model"
             })
             .when("/user/:uid/website/:wid/page/:pid/widget/:wgid",{
-                templateUrl:"views/widget/widget-heading.view.client.html",
+                templateUrl:"views/widget/widget-edit.view.client.html",
                 controller: "EditWidgetController",
                 controllerAs: "model"
             })
-            .when("/user/:uid/website/:wid/page/:pid/widget/:wgid",{
-                templateUrl:"views/widget/widget-image.view.client.html",
-                // controller: "EditWidgetController",
-                // controllerAs: "model"
-            })
-            .when("/user/:uid/website/:wid/page/:pid/widget/:wgid",{
-                templateUrl:"views/widget/widget-youtube.view.client.html",
-                // controller: "EditWidgetController",
-                // controllerAs: "model"
-            });
+
     }
+
 })();

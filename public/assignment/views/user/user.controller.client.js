@@ -39,6 +39,7 @@
     function ProfileController($routeParams, UserService) {
         var vm = this;
         var userId = $routeParams["uid"];
+        vm.userId = userId;
         vm.update = update;
 
         function update(newUser){

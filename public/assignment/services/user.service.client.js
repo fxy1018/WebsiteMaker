@@ -31,7 +31,7 @@
                 return "error2";
                 }
             else {
-                user._id = (new Date()).getTime();
+                user._id = (new Date()).getTime().toString();
                 users.push(user);
                 return angular.copy(user);
             }

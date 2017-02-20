@@ -19,7 +19,7 @@
         return api;
 
         function createPage(websiteId, page) {
-            page._id = (new Date()).getTime();
+            page._id = (new Date()).getTime().toString();
             page.websiteId = websiteId;
             pages.push(page);
         }

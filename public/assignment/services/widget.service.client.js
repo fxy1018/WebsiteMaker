@@ -9,7 +9,7 @@
             { "_id": "123", "widgetType": "HEADER", "pageId": "321", "size": 2, "text": "GIZMODO"},
             { "_id": "234", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
             { "_id": "345", "widgetType": "IMAGE", "pageId": "321", "width": "100%",
-                "url": "http://lorempixel.com/400/200/"},
+                "url": "https://i.kinja-img.com/gawker-media/image/upload/s--UE7cu6DV--/c_scale,fl_progressive,q_80,w_800/xoo0evqxzxrrmrn4ayoq.jpg"},
             { "_id": "456", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"},
             { "_id": "567", "widgetType": "HEADER", "pageId": "321", "size": 4, "text": "Lorem ipsum"},
             { "_id": "678", "widgetType": "YOUTUBE", "pageId": "321", "width": "100%",
@@ -17,36 +17,39 @@
             { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
         ];
 
-        this.findAllWidgets = findAllWidgets;
-        function findAllWidgets(pageId) {
-            return widgets;
-        }
+        this.createWidget = createWidget;
+        this.findWidgetsByPageId = findWidgetsByPageId;
+        this.findWidgetById = findWidgetById;
+        this.updateWidget = updateWidget;
+        this.deleteWidget = deleteWidget;
 
+        //this is for factory not service
+        // var api = {
+        //     "createWidget" : createWidget,
+        //     "findWidgetByPageId" : findWidgetByPageId,
+        //     "findWidgetById" : findWidgetById,
+        //     "updateWidget" : updateWidget,
+        //     "deleteWidget" : deleteWidget
+        // };
+        // return api;
 
-
-        var api = {
-            "createWidget" : "createWidget",
-            "findWidgetByPageId" : "findWidgetByPageId",
-            "findWidgetById" : "findWidgetById",
-            "updateWidget" : "updateWidget",
-            "deleteWidget" : "deleteWidget"
-        };
-        return api;
-
-        function createWidget(pageId, widget) {
-            widget._id = (new Date()).getTime();
+        function createWidget(pageId, widget, type) {
+            widget._id = (new Date()).getTime().toString();
             widget.pageId = pageId;
+            widget.widgetType = type;
             widgets.push(widget);
+            return(widget);
         }
 
-        function findWidgetByPageId(pageId) {
+        function findWidgetsByPageId(pageId) {
+            var res = []
             for (var w in widgets){
                 var widget = widgets[w];
                 if (widget.pageId === pageId){
-                    return angular.copy(widget);
+                    res.push(widget);
                 }
             }
-            return null;
+            return res;
         }
 
         function findWidgetById(widgetId) {
