@@ -1,10 +1,15 @@
 (function (){
     angular
         .module('WebAppMaker')
-        .directive('wbdvSorable', sortableDir);
+        .directive('wbdvSortable', sortableDir);
+    
+    function sortableDir() {
+        function linkFunc(scope, element, attribute) {
+            element.sortable({axis: 'y'});
+        }
+        return{
+          link: linkFunc
+        };
+    }
 
-
-
-
-
-})
+})();

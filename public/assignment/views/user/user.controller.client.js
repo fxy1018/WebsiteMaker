@@ -10,12 +10,14 @@
         vm.login = login;
 
         function login(user) {
-           var loginUser = UserService.findUserByCredentials(user.username, user.password);
-           if(loginUser != null){
-               $location.url('/user/'+loginUser._id);
-           } else {
-               vm.error = 'Unable to login';
-           }
+           var promise = UserService.findUserByCredentials(user.username, user.password);
+           promise.success(function(loginUser){
+               if(loginUser != null){
+                   $location.url('/user/'+loginUser._id);
+               } else {
+                   vm.error = 'Unable to login';
+               }
+           });
         }
     }
 
@@ -24,16 +26,23 @@
         vm.register = register;
 
         function register(user){
-            var newUser = UserService.createUser(user);
-            if (newUser === "error1"){
-                vm.error1 = "username has exist, try another one";
-            }else if (newUser === "error2"){
-                vm.error2 = "passwords are not same";
-            }else{
-                console.log(newUser);
-                $location.url('/user/'+newUser._id);
-            }
-        }
+            UserService
+                .findUserByUsername(user.username)
+                .success(function (user){
+                    vm.error1 = "username has exist, try another one";
+                })
+                .error(function(){
+                    UserService
+                        .createUser(user)
+                        .success(function(user){
+                            console.log(user);
+                            $location.url('/user/' + user._id);
+                        })
+                        .error(function () {
+                            vm.error2 = 'sorry could not register, passwords are not same';
+                        });
+                });
+        };
     }
 
     function ProfileController($routeParams, UserService) {
@@ -41,23 +50,40 @@
         var userId = $routeParams["uid"];
         vm.userId = userId;
         vm.update = update;
+        vm.delete = deleteUser;
 
-        function update(newUser){
-            var user = UserService.updateUser(userId, newUser);
-            if (user == null){
-                vm.error = "unable to update user";
-            }else {
-                vm.message= "user successfully update";
+        function init(){
+            var promise = UserService.findUserById(userId);
+            promise.success(function(user){
+                vm.user = user;
+            });
+        };
+        init();
+
+        function deleteUser(user){
+            var answer = confirm("Are you sure?");
+            if (answer) {
+                UserService
+                    .deleteUser(user._id)
+                    .success(function () {
+                        $location.url("/login");
+                    })
+                    .error(function () {
+                        vm.error = message;
+                    });
             }
         }
-
-        var user = UserService.findUserById(userId);
-        vm.user = user;
-
-        console.log(user);
-
-
-
+        function update(newUser){
+            UserService
+                .updateUser(userId, newUser)
+                .success(function(user){
+                    if (user == null){
+                        vm.error = "unable to update user";
+                    }else {
+                        vm.message= "user successfully update";
+                    }
+            });
+        }
     }
 
 

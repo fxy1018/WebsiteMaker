@@ -9,28 +9,43 @@
         var vm = this;
         vm.userId = $routeParams.uid;
         function init(){
-            vm.websites = WebSiteService.findWebsitesByUser(vm.userId);
-            console.log(vm.websites)
+            // vm.websites = WebSiteService.findWebsitesByUser(vm.userId);
+            WebSiteService
+                .findWebsitesByUser(vm.userId)
+                .success(function (websites) {
+                    console.log(websites);
+                    vm.websites = websites;
+                })
         }
         init();
     }
+
 
     function NewWebSiteController($routeParams, WebSiteService, $location) {
         var vm = this;
         vm.userId = $routeParams.uid;
         vm.createWebsite = createWebsite;
         function init(){
-            vm.websites = WebSiteService.findWebsitesByUser(vm.userId);
-            console.log(vm.websites);
+            WebSiteService
+                .findWebsitesByUser(vm.userId)
+                .success(function(websites){
+                    vm.websites = websites;
+                })
+
         }
         init();
 
 
         function createWebsite(website){
-            WebSiteService.createWebsite(vm.userId, website);
-            $location.url("/user/"+vm.userId+"/website");
+            WebSiteService
+                .createWebsite(vm.userId, website)
+                .success(function(){
+                    $location.url("/user/"+vm.userId+"/website");
+                })
         }
-    }
+    };
+
+
 
     function EditWebSiteController($routeParams, $location, WebSiteService) {
         var vm = this;
@@ -43,29 +58,48 @@
         vm.updateWebsite = updateWebsite;
 
         function init() {
-            vm.website = WebSiteService.findWebsiteById(vm.websiteId);
-            vm.websites = WebSiteService.findWebsitesByUser(vm.userId);
+            WebSiteService
+                .findWebsiteById(vm.websiteId)
+                .success(function (website) {
+                    vm.website = website;
+                });
+
+            WebSiteService
+                .findWebsitesByUser(vm.userId)
+                .success(function (websites){
+                    vm.websites = websites;
+            })
         }
         init();
 
 
         function deleteWebsite(){
-            WebSiteService.deleteWebsite(vm.websiteId);
-            $location.url("/user/"+vm.userId+"/website");
-        }
-
-        function updateWebsite(){
-            var website = WebSiteService.updateWebsite(vm.websiteId,vm.website);
-            console.log(vm.website)
-            if (website == null){
-                vm.error = "fail to update this website";
-            } else {
-                vm.message = "successfully update the website";
+            var answer = confirm("Are you sure?");
+            if (answer){
+                WebSiteService
+                    .deleteWebsite(vm.websiteId)
+                    .success(function () {
+                        $location.url("/user/"+vm.userId+"/website");
+                    })
+                    .error(function(){
+                        vm.error = "can't delete this website"
+                    });
             }
 
+        };
+
+        function updateWebsite(){
+            WebSiteService
+                .updateWebsite(vm.websiteId,vm.website)
+                .success(function (){
+                    console.log(vm.website)
+                    vm.message = 'successfully update the website';
+                })
+                .error(function () {
+                    vm.error = "fail to update this website"
+                });
         }
 
-    }
-
+    };
 
 })();
