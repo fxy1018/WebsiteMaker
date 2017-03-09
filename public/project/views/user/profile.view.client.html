@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link href="../../../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="../../../bower_components/bootstrap-social/bootstrap-social.css" rel="stylesheet">
+    <!--<link href="../../bower_components/materialize/dist/css/materialize.min.css" rel="stylesheet" media="screen,projection">-->
+    <link href="../../../css/myStyle.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Project Home Page</title>
+</head>
+<body>
+
+
+
+
+<nav class="navbar navbar-fixed-top bg-primary">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#/user/{{model.userId}}/website" class="navbar-link bg-primary ">
+                <span class="glyphicon glyphicon-ok"></span></a>
+        </div>
+        <div class="navbar-header">
+            <div class="navbar-brand bg-primary">Profile</div>
+        </div>
+    </div>
+</nav>
+
+
+<div class="container-fluid">
+    <div class="alert alert-danger" ng-show="model.error">
+        {{model.error}}
+    </div>
+    <div class="alert alert-success" ng-show="model.message">
+        {{model.message}}
+    </div>
+    
+    <form>
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text"
+                   ng-model="model.user.username"
+                   class="form-control"
+                   id="username"
+                   placeholder="Username">
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email"
+                   ng-model="model.user.email"
+                   class="form-control"
+                   id="email"
+                   placeholder="alice@wonderland.com">
+        </div>
+        <div class="form-group">
+            <label for="first-name">First Name</label>
+            <input type="text"
+                   ng-model="model.user.firstName"
+                   class="form-control"
+                   id="first-name"
+                   placeholder="Alice">
+        </div>
+        <div class="form-group">
+            <label for="last-name">Last Name</label>
+            <input type="text"
+                   ng-model="model.user.lastName"
+                   class="form-control"
+                   id="last-name" placeholder="Wonderland">
+        </div>
+    </form>
+    
+    
+    <a class="btn btn-primary btn-block"
+       href="#/user/{{model.user._id}}/website">Websites</a>
+    
+    <a class="btn btn-success btn-block"
+       ng-click="model.update(model.user)">Update</a>
+    <a class="btn btn-warning btn-block"
+       ng-click="model.delete(model.user)">Delete</a>
+    
+    <a class="btn btn-danger btn-block"
+       href="#/login">Logout</a>
+</div>
+
+<nav class="navbar navbar-fixed-bottom bg-primary">
+    <div class="container-fluid">
+        <div class="navbar-text pull-right">
+            <a href="#" class="navbar-link bg-primary">
+                <span class="glyphicon glyphicon-user">
+                </span>
+            </a>
+        </div>
+    </div>
+</nav>
+</body>
+
+<script src="../../../bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../../bower_components/jquery-ui/jquery-ui.min.js"></script>
+<!--<script src="../../js/init.js"></script>-->
+<script src="../../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!--<script src="../../bower_components/materialize/dist/js/materialize.js"></script>-->
+<script src="../../../bower_components/angular/angular.min.js"></script>
+
+
+</html>

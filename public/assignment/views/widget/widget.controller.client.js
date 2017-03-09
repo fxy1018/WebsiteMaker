@@ -19,10 +19,20 @@
                 });
         }init()
 
+        vm.updateWidgetOrder = updateWidgetOrder;
         vm.getYouTubeEmbedUrl = getYouTubeEmbedUrl;
         vm.getTrustedHtml = getTrustedHtml;
         vm.getWidgetTemplateUrl = getWidgetTemplateUrl;
 
+        function updateWidgetOrder(initial, final) {
+            WidgetService
+                .updateWidgetOrder(vm.pageId, initial, final)
+                .success(function (widgets) {
+                    console.log(widgets);
+                    vm.widgets = widgets;
+                    // $location.url("/user/"+vm.userId+"/website/"+vm.websiteId+"/page/"+vm.pageId+"/widget")
+                });
+        }
         function getWidgetTemplateUrl (widgetType) {
             var templateUrl = "views/widget/widget-"+widgetType+".view.client.html";
             return templateUrl;

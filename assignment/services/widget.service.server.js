@@ -4,6 +4,7 @@ module.exports = function (app) {
     app.get('/api/widget/:widgetId', findWidgetById);
     app.put('/api/widget/:widgetId', updateWidget);
     app.delete('/api/widget/:widgetId', deleteWidget);
+    app.put('/api/page/:pageId/widget', updateWidgetOrder);
 
 
     var widgets = [
@@ -17,6 +18,27 @@ module.exports = function (app) {
             "url": "https://youtu.be/AM2Ivdi9c4E" },
         { "_id": "789", "widgetType": "HTML", "pageId": "321", "text": "<p>Lorem ipsum</p>"}
     ];
+
+    function updateWidgetOrder(req, res) {
+        var pageId = req.param.pageId;
+        var initial = req.query.initial;
+        var final = req.query.final;
+
+        var wds = [];
+        for (var w in widgets){
+            if (widgets[w].pageId == pageId){
+                wds.push(widgets[w]);
+            }
+        }
+
+        var temp_widget = wds[initial];
+        wds.splice(initial,1);
+        wds.splice(final, temp_widget, 0)
+        res.json(wds);
+
+
+
+    }
 
     function deleteWidget(req,res) {
         var widgetId = req.params.widgetId;
