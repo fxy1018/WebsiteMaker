@@ -17,44 +17,41 @@
 <body>
 <div class="container-fluid">
     <form>
-        <div class="form-group">
-            <h1>Login</h1>
-            
-            <!--<div ng-show="model.error"-->
-                 <!--class="alert alert-danger"-->
-                 <!--role="alert">-->
-                <!--{{model.error}}-->
-            <!--</div>-->
-            
-            <input type="text"
-                   ng-model="user.username"
-                   class="form-control"
-                   placeholder="username"/>
-            <input type="password"
-                   ng-model="user.password"
-                   class="form-control"
-                   placeholder="password"/>
-    
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox"> Remember me
-                </label>
-            </div>
-            
-            <a class="btn btn-facebook btn-block"
-               ng-click="model.login(user)">Login</a>
-            
-            <a class="btn btn-danger btn-block"
-               href="homepage.html">Cancel</a>
-            
-            <a class="btn btn-success btn-block"
-               href="#/register">Register</a>
-            
-            <div>
-                <a ng-click="">forgot your username or password?</a>
-            </div>
-            
+     
+        <h1>Login</h1>
+        
+        <!--<div ng-show="model.error"-->
+             <!--class="alert alert-danger"-->
+             <!--role="alert">-->
+            <!--{{model.error}}-->
+        <!--</div>-->
+        
+        <input type="text"
+               ng-model="user.username"
+               class="form-control"
+               placeholder="username"/>
+        <input type="password"
+               ng-model="user.password"
+               class="form-control"
+               placeholder="password"/>
+
+        <div class="checkbox">
+            <label>
+                <input type="checkbox"> Remember me
+            </label>
         </div>
+        
+        
+        <a class="btn btn-facebook btn-block"
+           ng-click="model.login(user)">Login</a>
+    
+        <a class="btn btn-danger btn-block"
+           href="homepage.html">Cancel</a>
+    
+        <a ng-click="">forgot your username or password?</a>
+        
+        <a class="pull-right" ng-click="">not a member?</a>
+        
     </form>
 </div>
 

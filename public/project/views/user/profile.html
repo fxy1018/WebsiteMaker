@@ -18,44 +18,24 @@
 
 
 
-<nav class="navbar navbar-fixed-top bg-primary">
+<nav class="navbar navbar-fixed-top navbar-default">
     <div class="container-fluid">
-        <div class="navbar-text pull-right">
-            <a href="#/user/{{model.userId}}/website" class="navbar-link bg-primary ">
-                <span class="glyphicon glyphicon-ok"></span></a>
-        </div>
         <div class="navbar-header">
-            <div class="navbar-brand bg-primary">Profile</div>
+            <div class="navbar-brand">Profile</div>
         </div>
     </div>
 </nav>
 
 
 <div class="container-fluid">
-    <div class="alert alert-danger" ng-show="model.error">
-        {{model.error}}
-    </div>
-    <div class="alert alert-success" ng-show="model.message">
-        {{model.message}}
-    </div>
-    
+    <!--<div class="alert alert-danger" ng-show="model.error">-->
+        <!--{{model.error}}-->
+    <!--</div>-->
+    <!--<div class="alert alert-success" ng-show="model.message">-->
+        <!--{{model.message}}-->
+    <!--</div>-->
+    <!---->
     <form>
-        <div class="form-group">
-            <label for="username">Username</label>
-            <input type="text"
-                   ng-model="model.user.username"
-                   class="form-control"
-                   id="username"
-                   placeholder="Username">
-        </div>
-        <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email"
-                   ng-model="model.user.email"
-                   class="form-control"
-                   id="email"
-                   placeholder="alice@wonderland.com">
-        </div>
         <div class="form-group">
             <label for="first-name">First Name</label>
             <input type="text"
@@ -71,25 +51,62 @@
                    class="form-control"
                    id="last-name" placeholder="Wonderland">
         </div>
+        <div class="form-group">
+            <label for="birthdate">Brith Date</label>
+            <input type="date"
+                   class="form-control"
+                   id="birthdate"
+                   placeholder="Username">
+        </div>
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <div class="form-inline">
+                <input type="radio" id="gender" value="male"> Male
+                <input type="radio" id="gender" value="female"> Female
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email"
+                   ng-model="model.user.email"
+                   class="form-control"
+                   id="email"
+                   placeholder="alice@wonderland.com">
+        </div>
+    
+        <div class="form-group">
+            <label for="newpassword">Email address</label>
+            <input id="newpassword"
+                   type="password"
+                   ng-model="model.user.password"
+                   class="form-control"
+                   placeholder="password"/>
+        </div>
+    
+        <div class="form-group">
+            <label for="newpassword2">Email address</label>
+            <input id="newpassword2"
+                   type="password"
+                   ng-model="model.user.verifiedpassword"
+                   class="form-control"
+                   placeholder="verify password"/>
+        </div>
+        
+        
+        
     </form>
-    
-    
-    <a class="btn btn-primary btn-block"
-       href="#/user/{{model.user._id}}/website">Websites</a>
     
     <a class="btn btn-success btn-block"
        ng-click="model.update(model.user)">Update</a>
-    <a class="btn btn-warning btn-block"
-       ng-click="model.delete(model.user)">Delete</a>
     
     <a class="btn btn-danger btn-block"
-       href="#/login">Logout</a>
+       href="#/login">Cancel</a>
 </div>
 
-<nav class="navbar navbar-fixed-bottom bg-primary">
+<nav class="navbar navbar-fixed-bottom">
     <div class="container-fluid">
         <div class="navbar-text pull-right">
-            <a href="#" class="navbar-link bg-primary">
+            <a href="#" class="navbar-link">
                 <span class="glyphicon glyphicon-user">
                 </span>
             </a>
