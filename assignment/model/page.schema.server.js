@@ -4,9 +4,9 @@ var pageSchema = mongoose.Schema({
     name: String,
     title: String,
     description: String,
-    widgets: {type: mongoose.Schema.Types.ObjectId, ref:'WebAppWidget'},
+    widgets: [{type: mongoose.Schema.Types.ObjectId, ref:'WebAppWidget'}],
     dateCreated: Date
-}, {collections: "WebsiteApp.page"});
+}, {collections: 'WebsiteApp.Page'});
 
 module.exports = pageSchema;
 
