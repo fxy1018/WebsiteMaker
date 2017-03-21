@@ -19,6 +19,7 @@
                 },
 
             });
+            return(startIndex,endIndex);
         }
         return{
             // template: 'Hello'

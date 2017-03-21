@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MovieApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Movies</title>
+    <link href ="../../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../../bower_components/angular/angular.min.js"></script>
+    <script src="movies.js"></script>
+    
+</head>
+<body>
+<div class="container-fluid" ng-controller="MovieController as model">
+    <h1>Movies Databases</h1>
+    <label>Title</label>
+    <input ng-model="model.movie.title" class="form-control">
+    
+    <a ng-click="model.updateMovie(model.movie)" class="btn btn-block btn-success">Update</a>
+    
+    <a ng-click="model.createMovie(model.movie)" class="btn btn-block btn-primary">Create</a>
+    
+    
+    
+    
+    <ul class="list-group">
+        <li ng-repeat="movie in model.movies" class="list-group-item">
+            {{movie.title}}
+            <a class="pull-right" ng-click="model.deleteMovie(movie._id)">
+                <span class="glyphicon glyphicon-remove"></span>
+            </a>
+            
+            <a class="pull-right" ng-click="model.selectMovie(movie._id)">
+                <span class="glyphicon glyphicon-cog"></span>
+            </a>
+        </li>
+    </ul>
+    
+    
+    
+</div>
+
+
+
+
+
+
+</body>
+</html>

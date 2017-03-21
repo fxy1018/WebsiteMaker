@@ -12,8 +12,14 @@ app.use(express.static(__dirname + '/public'));
 require ("./test/app.js")(app);
 require ("./assignment/app.js")(app);
 
+
 // var assignment = require("./assignment/app.js");
 // assignment(app);
+
+require('./lectures/mongo/movies')(app);
+
+
+
 
 var port = process.env.PORT || 3000;
 
